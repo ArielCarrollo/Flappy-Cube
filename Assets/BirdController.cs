@@ -11,12 +11,12 @@ public class BirdController : MonoBehaviour
     private Rigidbody rb;
     private float lastJumpTime;
 
-    private PipeSpawner pipeSpawner; // Referencia al script de generación de tuberías
+    private PipeSpawner pipeSpawner; 
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        pipeSpawner = FindObjectOfType<PipeSpawner>(); // Encontrar el script PipeSpawner3D en la escena
+        pipeSpawner = FindObjectOfType<PipeSpawner>(); 
     }
 
     private void Update()
@@ -42,12 +42,12 @@ public class BirdController : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Pipe")) // Si colisiona con una tubería
+        if (other.gameObject.CompareTag("Pipe")) 
         {
-            Vector3 pipeMiddlePosition = pipeSpawner.GetLastSpawnMiddlePosition(); // Obtener la posición media de la tubería
-            Vector3 playerPosition = transform.position; // Posición actual del jugador
-            Vector3 pushDirection = (playerPosition - pipeMiddlePosition).normalized; // Calcular la dirección del empuje (invertida)
-            rb.AddForce(pushDirection * jumpForce, ForceMode.Impulse); // Aplicar una fuerza de empuje al pájaro
+            Vector3 pipeMiddlePosition = pipeSpawner.GetLastSpawnMiddlePosition(); 
+            Vector3 playerPosition = transform.position; 
+            Vector3 pushDirection = (playerPosition - pipeMiddlePosition).normalized; 
+            rb.AddForce(pushDirection * jumpForce, ForceMode.Impulse); 
         }
     }
 
